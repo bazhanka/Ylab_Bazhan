@@ -1,16 +1,28 @@
-from fight import Fight, laser, karate, makarov
+from fight import laser, karate, makarov
 
 
 class SuperHero:  # Класс супергероя.
-    def __init__(self, name, weapon: Fight):
+    def __init__(self, name):
         self.name = name
-        self.weapon = weapon
+        self.weapon = karate
 
     def attack(self):
         return self.weapon.attack()
 
 
-Superman = SuperHero('Superman', laser)
-Jackie = SuperHero('Jackie Chan', karate)
-Chuck = SuperHero('Chuck Norris', makarov)
-Clark = SuperHero('Clark Kent', karate)
+class SuperMan(SuperHero):  # Наследуемый класс супергероя со суперспособностями.
+    def __init__(self, name):
+        super(SuperMan, self).__init__(name)
+        self.weapon = laser
+
+
+class SuperGunMan(SuperHero):  # Наследуемый класс супергероя с оружием.
+    def __init__(self, name):
+        super(SuperGunMan, self).__init__(name)
+        self.weapon = makarov
+
+
+Superman = SuperMan('Superman')
+Jackie = SuperHero('Jackie Chan')
+Chuck = SuperGunMan('Chuck Norris')
+Clark = SuperHero('Clark Kent')
