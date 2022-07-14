@@ -1,28 +1,39 @@
 from fight import laser, karate, makarov
+from abc import ABC, abstractmethod
 
 
-class SuperHero:  # Класс супергероя.
+class SuperHero(ABC):  # Абстрактный класс супергероя.
+
+    @abstractmethod  # Обязательный метод атаки.
+    def attack(self):
+        pass
+
+
+class KarateMan(SuperHero):  # Наследуемый класс супергероя, владеющего ближним боем.
     def __init__(self, name):
         self.name = name
-        self.weapon = karate
 
     def attack(self):
-        return self.weapon.attack()
+        karate.attack()
 
 
 class SuperMan(SuperHero):  # Наследуемый класс супергероя со суперспособностями.
     def __init__(self, name):
-        super(SuperMan, self).__init__(name)
-        self.weapon = laser
+        self.name = name
+
+    def attack(self):
+        laser.attack()
 
 
 class SuperGunMan(SuperHero):  # Наследуемый класс супергероя с оружием.
     def __init__(self, name):
-        super(SuperGunMan, self).__init__(name)
-        self.weapon = makarov
+        self.name = name
+
+    def attack(self):
+        makarov.attack()
 
 
 Superman = SuperMan('Superman')
-Jackie = SuperHero('Jackie Chan')
+Jackie = KarateMan('Jackie Chan')
 Chuck = SuperGunMan('Chuck Norris')
-Clark = SuperHero('Clark Kent')
+Clark = KarateMan('Clark Kent')
